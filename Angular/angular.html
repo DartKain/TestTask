@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <title>Список заказов</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <!-- Data Tables CSS-->
+  <!--Angular-->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+  <script src="app.js"></script>
+
+</head>
+
+<body ng-app="sortApp" ng-controller="mainController">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a href="#" class="navbar-brand">
+      <img src="http://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="logo" width="30px" height="30px">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Togglenavigation">
+        <span class="navbar-toggler-icon"></span>
+     </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Домой</a>
+        </li>
+        <li class="nav-item active">
+          <a href="#" class="nav-link">Заказы</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">О нас</a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-md">
+        <table class="table table-responsive table-hover" id="test-table">
+          <caption>Список заказов</caption>
+          <thead class="table-header">
+            <tr>
+              <th data-type="number">
+                <a href="#" ng-click="sortType = 'number'; sortReverse = !sortReverse">Номер
+                <span ng-show="sortType == 'number' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'number' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th data-type="string">
+                <a href="#" ng-click="sortType = 'customer'; sortReverse = !sortReverse">Покупатель
+                <span ng-show="sortType == 'customer' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'customer' && sortReverse" class="fa fa-caret-up"></span>
+                </a></th>
+              <th data-type="string">
+                <a href="#" ng-click="sortType = 'manager'; sortReverse = !sortReverse">Менеджер
+              <span ng-show="sortType == 'manager' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'manager' && sortReverse" class="fa fa-caret-up"></span>
+                </a></th>
+              <th data-type="string">
+                <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse">
+              Статус заказа
+              <span ng-show="sortType == 'status' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'status' && sortReverse" class="fa fa-caret-up"></span>
+                </a></th>
+              <th data-type="number">
+                <a href="#" ng-click="sortType = 'summ'; sortReverse = !sortReverse">
+              Сумма
+              <span ng-show="sortType == 'summ' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'summ' && sortReverse" class="fa fa-caret-up"></span>
+                </a></th>
+            </tr>
+          </thead>
+          <tbody id="test-body">
+            <tr ng-repeat="order in orders | orderBy:sortType:sortReverse">
+              <td>{{order.number}}</td>
+              <td>{{order.customer}}</td>
+              <td>{{order.manager}}</td>
+              <td>{{order.status}}</td>
+              <td>{{order.summ}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
