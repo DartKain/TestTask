@@ -77,6 +77,7 @@
                 <span ng-show="sortType == 'summ' && sortReverse" class="fa fa-caret-up"></span>
                 </a></th>
             </tr>
+            <tr></tr>
           </thead>
           <tbody id="test-body">
             <tr ng-repeat="order in Controller.orders | orderBy:sortType:sortReverse">
@@ -85,12 +86,14 @@
               <td>{{order.manager}}</td>
               <td>{{order.status}}</td>
               <td>{{order.summ}}</td>
+              <td><a href= "#" ng-click = "Controller.showForm = true">Edit</a></td>
             </tr>
           </tbody>
         </table>
+
       </div>
       <div class="col-md">
-        <div class="test-form">
+        <div class="test-form" ng-show="Controller.showForm">
           <form id="testForm">
             <div class="form-group">
               <label for="test-form-Number">Номер заказа</label>
@@ -112,7 +115,7 @@
               <label for="test-form-Price">Сумма</label>
               <input type="number" class="form-control" ng-model="formSumm"  id="test-form-Price" placeholder="Сумма">
             </div>
-            <button type = "button" class="btn btn-primary" id="button">Изменить</button>
+            <button type = "button" class="btn btn-primary" id="button" ng-click = "Controller.showForm = false">Изменить</button>
           </form>
         </div>
       </div>
