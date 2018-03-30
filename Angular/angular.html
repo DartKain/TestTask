@@ -86,7 +86,7 @@
               <td>{{order.manager}}</td>
               <td>{{order.status}}</td>
               <td>{{order.summ}}</td>
-              <td><a href= "#" ng-click = "Controller.showForm = true">Edit</a></td>
+              <td><a href= "#" ng-click = "Controller.editForm($index)">Edit</a></td>
             </tr>
           </tbody>
         </table>
@@ -97,11 +97,11 @@
           <form id="testForm">
             <div class="form-group">
               <label for="test-form-Number">Номер заказа</label>
-              <input type="number" class="form-control" ng-model="formNumber" id="test-form-Number" placeholder="Номер заказа">
+              <input type="number" class="form-control" ng-model="order.number" id="test-form-Number" placeholder="Номер заказа">
             </div>
             <div class="form-group">
               <label for="test-form-Customer">Покупатель</label>
-              <input type="text" class="form-control" ng-model="formCustomer"  id="test-form-Customer" placeholder="Покупатель">
+              <input type="text" class="form-control" ng-model="order.customer"  id="test-form-Customer" placeholder="Покупатель">
             </div>
             <div class="form-group">
               <label for="test-form-Manager">Менеджер</label>
