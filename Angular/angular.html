@@ -107,15 +107,15 @@
             </div>
             <div class="form-group">
               <label for="test-form-Manager">Менеджер</label>
-              <input type="text" class="form-control" ng-model="formManager"  id="test-form-Manager" placeholder="Менеджер">
+              <input type="text" class="form-control" ng-model="vm.order.manager"  id="test-form-Manager" placeholder="Менеджер">
             </div>
             <div class="form-group">
               <label for="test-form-Price">Статус заказа</label>
-              <input type="text" class="form-control"ng-model="formStatus"  id="test-form-Status" placeholder="Статус заказа">
+              <input type="text" class="form-control"ng-model="vm.order.status"  id="test-form-Status" placeholder="Статус заказа">
             </div>
             <div class="form-group">
               <label for="test-form-Price">Сумма</label>
-              <input type="number" class="form-control" ng-model="formSumm"  id="test-form-Price" placeholder="Сумма">
+              <input type="number" class="form-control" ng-model="vm.order.summ"  id="test-form-Price" placeholder="Сумма">
             </div>
             <button type = "button" class="btn btn-primary" id="button" ng-click = "vm.saveEdited()">Изменить</button>
              <button type = "button" class="btn btn-primary" id="button" ng-click = "vm.cancel()">Отмена</button>
