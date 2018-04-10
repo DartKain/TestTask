@@ -19,6 +19,9 @@
 </head>
 
 <body ng-app="sortApp" ng-controller="sortController as vm">
+
+  <!-- Навигация -->
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <a href="#" class="navbar-brand">
       <img src="http://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="logo" width="30px" height="30px">
@@ -42,11 +45,14 @@
     </div>
   </nav>
 
+  <!--Навигация-->
+
   <div class="container-fluid mt-5">
     <div class="row">
       <div class="col-md">
-        <button type = "button" class="btn btn-primary" id="button" ng-click = "vm.add()">Add</button>
+        <button type="button" class="btn btn-primary" id="button" ng-click="vm.add()">Add</button>
 
+        <!--Форма для сортировки-->
 
         <form id="sort-form" name="sort-form">
           <div class="form-group">
@@ -68,6 +74,10 @@
           </div>
 
         </form>
+
+        <!--Форма для сортировки-->
+
+        <!-- Таблица -->
 
         <table class="table table-responsive table-hover" id="test-table">
           <caption>Список заказов</caption>
@@ -112,37 +122,45 @@
               <td>{{order.manager}}</td>
               <td>{{order.status}}</td>
               <td>{{order.summ}}</td>
-              <td><a href= "#" ng-click = "vm.openOrder(order)">Edit</a></td>
+              <td><a href="#" ng-click="vm.openOrder(order)">Edit</a></td>
             </tr>
           </tbody>
         </table>
 
+        <!--Таблица -->
+
+
       </div>
       <div class="col-md">
         <div class="test-form" ng-show="vm.order">
+
+          <!--Форма для изменения таблицы-->
+
           <form id="testForm" name="testForm">
             <div class="form-group">
               <label for="test-form-Number">Номер заказа</label>
-              <input type="number" class="form-control" ng-model="vm.order.number" id="test-form-Number" name = "testFormNumber" placeholder="Номер заказа">
+              <input type="number" class="form-control" ng-model="vm.order.number" id="test-form-Number" name="testFormNumber" placeholder="Номер заказа">
             </div>
             <div class="form-group">
               <label for="test-form-Customer">Покупатель</label>
-              <input type="text" class="form-control" ng-model="vm.order.customer"  id="test-form-Customer" placeholder="Покупатель">
+              <input type="text" class="form-control" ng-model="vm.order.customer" id="test-form-Customer" placeholder="Покупатель">
             </div>
             <div class="form-group">
               <label for="test-form-Manager">Менеджер</label>
-              <input type="text" class="form-control" ng-model="vm.order.manager"  id="test-form-Manager" placeholder="Менеджер">
+              <input type="text" class="form-control" ng-model="vm.order.manager" id="test-form-Manager" placeholder="Менеджер">
             </div>
             <div class="form-group">
               <label for="test-form-Price">Статус заказа</label>
-              <input type="text" class="form-control"ng-model="vm.order.status"  id="test-form-Status" placeholder="Статус заказа">
+              <input type="text" class="form-control" ng-model="vm.order.status" id="test-form-Status" placeholder="Статус заказа">
             </div>
             <div class="form-group">
               <label for="test-form-Price">Сумма</label>
-              <input type="number" class="form-control" ng-model="vm.order.summ"  id="test-form-Price" placeholder="Сумма">
+              <input type="number" class="form-control" ng-model="vm.order.summ" id="test-form-Price" placeholder="Сумма">
             </div>
-            <button type = "button" class="btn btn-primary" id="button" ng-click = "vm.saveEdited()">Изменить</button>
-             <button type = "button" class="btn btn-primary" id="button" ng-click = "vm.cancel()">Отмена</button>
+            <button type="button" class="btn btn-primary" id="button" ng-click="vm.saveEdited()">Изменить</button>
+            <button type="button" class="btn btn-primary" id="button" ng-click="vm.cancel()">Отмена</button>
           </form>
+
+          <!--Форма для изменения таблицы-->
         </div>
       </div>
