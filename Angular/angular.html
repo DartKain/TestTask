@@ -18,7 +18,7 @@
 
 </head>
 
-<body ng-app="sortApp" ng-controller="mainController as Controller">
+<body ng-app="sortApp" ng-controller="sortController as vm">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <a href="#" class="navbar-brand">
       <img src="http://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="logo" width="30px" height="30px">
@@ -41,9 +41,11 @@
 
     </div>
   </nav>
+
   <div class="container-fluid mt-5">
     <div class="row">
       <div class="col-md">
+        <button type = "button" class="btn btn-primary" id="button" ng-click = "vm.add()">Add</button>
         <table class="table table-responsive table-hover" id="test-table">
           <caption>Список заказов</caption>
           <thead class="table-header">
@@ -80,28 +82,28 @@
             <tr></tr>
           </thead>
           <tbody id="test-body">
-            <tr ng-repeat="order in Controller.orders | orderBy:sortType:sortReverse">
+            <tr ng-repeat="order in vm.orders | orderBy:sortType:sortReverse">
               <td>{{order.number}}</td>
               <td>{{order.customer}}</td>
               <td>{{order.manager}}</td>
               <td>{{order.status}}</td>
               <td>{{order.summ}}</td>
-              <td><a href= "#" ng-click = "Controller.editForm($index)">Edit</a></td>
+              <td><a href= "#" ng-click = "vm.openOrder(order)">Edit</a></td>
             </tr>
           </tbody>
         </table>
 
       </div>
       <div class="col-md">
-        <div class="test-form" ng-show="Controller.showForm">
-          <form id="testForm">
+        <div class="test-form" ng-show="vm.order">
+          <form id="testForm" name="testForm">
             <div class="form-group">
               <label for="test-form-Number">Номер заказа</label>
-              <input type="number" class="form-control" ng-model="order.number" id="test-form-Number" placeholder="Номер заказа">
+              <input type="number" class="form-control" ng-model="vm.order.number" id="test-form-Number" name = "testFormNumber" placeholder="Номер заказа">
             </div>
             <div class="form-group">
               <label for="test-form-Customer">Покупатель</label>
-              <input type="text" class="form-control" ng-model="order.customer"  id="test-form-Customer" placeholder="Покупатель">
+              <input type="text" class="form-control" ng-model="vm.order.customer"  id="test-form-Customer" placeholder="Покупатель">
             </div>
             <div class="form-group">
               <label for="test-form-Manager">Менеджер</label>
@@ -115,7 +117,8 @@
               <label for="test-form-Price">Сумма</label>
               <input type="number" class="form-control" ng-model="formSumm"  id="test-form-Price" placeholder="Сумма">
             </div>
-            <button type = "button" class="btn btn-primary" id="button" ng-click = "Controller.showForm = false">Изменить</button>
+            <button type = "button" class="btn btn-primary" id="button" ng-click = "vm.saveEdited()">Изменить</button>
+             <button type = "button" class="btn btn-primary" id="button" ng-click = "vm.cancel()">Отмена</button>
           </form>
         </div>
       </div>
