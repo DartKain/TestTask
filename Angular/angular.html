@@ -50,31 +50,35 @@
   <div class="container-fluid mt-5">
     <div class="row">
       <div class="col-md">
-        <button type="button" class="btn btn-primary" id="button" ng-click="vm.add()">Add</button>
+
+        <!--       Кнопки Добавить/Удалить-->
+        <button type="button" class="btn btn-primary" id="button" ng-click="vm.add()">Добавить</button>
+
+
+        <!--       Кнопки Добавить/Удалить-->
 
         <!--Форма для сортировки-->
 
         <form id="sort-form" name="sort-form">
           <div class="form-group">
             <label for="sort-col">Выберите столбец для сортировки</label>
-            <select name="sort-col" id="sort-col">
-              <option selected value="number">Номер заказа</option>
-              <option value="">Покупатель</option>
-              <option value=""> Менеджер</option>
-              <option value="">Статус заказа</option>
-              <option value="">Сумма</option>
+            <select name="sort-col" id="sort-col" ng-model="vm.sortType">
+              <option ng-repeat = "col in vm.colType" >{{col.sortCol}}</option>
+
             </select>
           </div>
           <div class="form-group">
             <label for="sort-order">Выберите порядок сортировки</label>
-            <select name="sort-order" id="sort-order">
-              <option selected value="">По возрастанию</option>
-              <option value="">По убыванию</option>
+            <select name="sort-order" id="sort-order" ng-model="vm.sortOrder">
+              <option value = false >По возрастанию</option>
+              <option value = true >По убыванию</option>
             </select>
           </div>
-
         </form>
-
+        <div class="alert alert-info">
+          <p>Sorted Column: {{vm.sortType}}</p>
+          <p>Sort Order: {{vm.sortOrder}}</p>
+        </div>
         <!--Форма для сортировки-->
 
         <!-- Таблица -->
@@ -107,22 +111,24 @@
                 <span ng-show="sortType == 'status' && sortReverse" class="fa fa-caret-up"></span>
                 </a></th>
               <th data-type="number">
-                <a href="#" ng-click="sortType = 'summ'; sortReverse = !sortReverse">
+                <a href="#" ng-click="sortType = sort.summ; sortReverse = !sortReverse">
               Сумма
               <span ng-show="sortType == 'summ' && !sortReverse" class="fa fa-caret-down"></span>
                 <span ng-show="sortType == 'summ' && sortReverse" class="fa fa-caret-up"></span>
                 </a></th>
             </tr>
             <tr></tr>
+            <tr></tr>
           </thead>
           <tbody id="test-body">
-            <tr ng-repeat="order in vm.orders | orderBy:sortType:sortReverse">
+            <tr ng-repeat="order in vm.orders | orderBy:vm.sortType:vm.sortOrder">
               <td>{{order.number}}</td>
               <td>{{order.customer}}</td>
               <td>{{order.manager}}</td>
               <td>{{order.status}}</td>
               <td>{{order.summ}}</td>
               <td><a href="#" ng-click="vm.openOrder(order)">Edit</a></td>
+              <td><a href="#" ng-click="vm.remove(order)">Delete</a> </td>
             </tr>
           </tbody>
         </table>
