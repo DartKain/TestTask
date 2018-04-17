@@ -1,22 +1,27 @@
-    let data = [{
+
+let data = [{
+      id: 1,
       number: 1,
       customer: 'Иванова Ирина',
       manager: 'Петрова Полина',
       status: 'Выполнен',
       summ: 1500
       }, {
+      id: 2,
       number: 2,
       customer: 'Сидорова Алла',
       manager: 'Петрова Полина',
       status: 'В обработке',
       summ: 11000
       }, {
+      id: 3,
       number: 3,
       customer: 'Лукьянова Прасковья',
       manager: 'Смирнов Андрей',
       status: 'Отказ',
       summ: 15020
       }, {
+      id: 4,
       number: 4,
       customer: 'Гришин Сидор',
       manager: 'Смирнов Андрей',
@@ -59,17 +64,15 @@
 
       sort.add = function () {
         let order = {};
-        sort.orders.push(order);
+        //sort.orders.push(order);
         sort.order = order;
       };
 
       sort.remove = function (order){
-      let order = {};
-        sort.orders.splice(order);
-
-      };
-
-      sort.optionOne = function (){
-        console.log ("123321");
+        let index = sort.orders.indexOf(order);
+        if (index > -1) {
+       sort.orders.splice(index, 1);
+        }
+        console.log(order);
       };
     }]);
